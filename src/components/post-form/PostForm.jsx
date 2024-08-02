@@ -6,7 +6,7 @@ import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { statePosts } from "../../store/authSlice";
-import LoadingImage from "../../../public/Loading.gif";
+import LoadingImage from "/Loading.gif";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -160,7 +160,7 @@ export default function PostForm({ post }) {
         maxLength="35"
           label="Title :"
           placeholder="Title"
-          className="mb-1 w-72 text-white bg-slate-800 focus:bg-slate-950"
+          className="mb-1 w-72 text-white bg-gray-950 focus:bg-slate-950"
           {...register("title", {
             required: { value: true, message: "title is requirred" },
             maxLength: { value: 34, message: "maximum lenght of title is 35" },
@@ -171,7 +171,7 @@ export default function PostForm({ post }) {
           disable={post ? true : false}
           label="Slug :"
           placeholder="Slug"
-          className="mb-1 w-72 text-white bg-slate-800 focus:bg-slate-950"
+          className="mb-1 w-72 text-white bg-gray-950 focus:bg-slate-950"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -198,7 +198,7 @@ export default function PostForm({ post }) {
               type="file"
               onChange={handleImageChange}
               accept="image/*"
-              className={` w-4/6 px-3 py-2 rounded-lg bg-gray-800 text-black outline-none focus:bg-gray-700 duration-200 borde text-white `}
+              className={` w-4/6 px-3 py-2 rounded-lg bg-gray-800  outline-none focus:bg-gray-700 duration-200 borde text-white `}
               id={"file"}
             />
           </div>

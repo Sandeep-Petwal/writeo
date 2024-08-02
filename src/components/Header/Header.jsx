@@ -2,7 +2,7 @@ import { LogoutBtn } from "../index";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import logoImage from "../../../public/Blog.png";
+import logoImage from "/Blog.png";
 
 function Header() {
   // const authStatus = false;

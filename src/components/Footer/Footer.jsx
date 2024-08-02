@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import React from "react";
-import { Logo } from "../index";
+import  Logo  from "/Blog.png";
 
 function Footer() {
   return (
@@ -12,7 +12,7 @@ function Footer() {
             href="#"
             className="flex items-center justify-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
           >
-           <Logo width="50px"/>
+<img src={Logo} alt="Logo" width={"50px"} className="rounded-full" />
             <span className="font-serif self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Writeo
             </span>
