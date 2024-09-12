@@ -1,4 +1,4 @@
-# blog application 
+<!-- # blog application 
 ### Appwrite for backend as service 
 ### Tinymce rich text editor for text editor functionality
 ### Html-react-parser using to parse html 
@@ -19,4 +19,4 @@
 ## 10. Post-Card
 ## 10. Post-Card
 ## 10. Post-Card
-## 10. Post-Card
+## 10. Post-Card -->
