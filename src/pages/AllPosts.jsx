@@ -6,7 +6,6 @@ import LoadingImage from "../../public/Loading.gif";
 import { useSelector, useDispatch } from "react-redux";
 import { statePosts } from "../store/authSlice";
 
-
 function AllPosts() {
   const dispatch = useDispatch();
 
@@ -16,6 +15,7 @@ function AllPosts() {
 
   const status = useSelector((state) => state.auth.status);
   const state_posts = useSelector((state) => state.auth.posts);
+
 
   useEffect(() => {
     if (status) {
@@ -94,6 +94,7 @@ function AllPosts() {
             </div>
           ))}
         </div>
+
       </Container>
     </div>
   );

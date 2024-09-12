@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
@@ -17,6 +18,25 @@ function Home() {
 
   const state_posts = useSelector((state) => state.auth.posts);
   // console.log("state posts - ", state_posts);
+
+  // pagination
+  const [postsOnPage, setPostsOnPage] = useState(6);
+  const [pageNo, setPageNo] = useState(1);
+  const startIndex = (pageNo - 1) * postsOnPage;
+  const endIndex = startIndex + postsOnPage;
+
+  const nextPage = () => {
+    if (posts.length / postsOnPage == pageNo) {
+      return;
+    }
+    setPageNo(pageNo + 1);
+  };
+  const previusPage = () => {
+    if (pageNo == 1) {
+      return;
+    }
+    setPageNo(pageNo - 1);
+  };
 
   useEffect(() => {
     // 1.loading posts from state
@@ -138,11 +158,57 @@ function Home() {
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap justify-center">
-          {posts.map((post) => (
+          {posts.slice(startIndex, endIndex).map((post) => (
             <div key={post.$id} className="p-2 w-96 ">
               <PostCard {...post} />
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center text-white mt-8 items-center gap-8">
+          <button
+            disabled=""
+            className={`${
+              pageNo == 1 && "hidden" 
+            } rounded-md border border-slate-300 p-2.5 text-center text-sm transition-all shadow-sm hover:shadow-lg  hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
+            type="button"
+            onClick={previusPage}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                fillRule="evenodd"
+                d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          <p className="text-white">
+            Page <strong className="text-white">{pageNo}</strong> of&nbsp;
+            <strong className="text-white">{Math.ceil(posts.length / postsOnPage)}</strong>
+          </p>
+          <button
+            className={` ${posts.length / postsOnPage == pageNo && "hidden"} rounded-md border border-slate-300 p-2.5 text-center text-sm transition-all shadow-sm hover:shadow-lg text-white hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
+            type="button"
+            onClick={nextPage}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
         </div>
       </Container>
     </div>

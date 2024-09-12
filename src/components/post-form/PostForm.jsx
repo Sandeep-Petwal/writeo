@@ -160,7 +160,7 @@ export default function PostForm({ post }) {
         maxLength="35"
           label="Title :"
           placeholder="Title"
-          className="mb-1 w-72 text-white bg-gray-950 focus:bg-slate-950"
+          className="mb-1 ml-2 w-72 bg-gray-950 "
           {...register("title", {
             required: { value: true, message: "title is requirred" },
             maxLength: { value: 34, message: "maximum lenght of title is 35" },
@@ -171,7 +171,7 @@ export default function PostForm({ post }) {
           disable={post ? true : false}
           label="Slug :"
           placeholder="Slug"
-          className="mb-1 w-72 text-white bg-gray-950 focus:bg-slate-950"
+          className="mb-1 ml-2 w-72  bg-gray-950 "
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
